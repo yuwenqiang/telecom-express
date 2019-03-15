@@ -3,7 +3,7 @@
  * @author yuwenqiang
  * @date 2019/03/12 14:28:03
  */
-const dbUrl = "mongodb://localhost:27017/";
+const dbUrl = "mongodb://96.45.176.172:27017/";
 const MongoClient = require('mongodb').MongoClient;
 
 const handel = {
