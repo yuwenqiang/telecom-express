@@ -3,7 +3,8 @@
  * @author yuwenqiang
  * @date 2019/03/12 14:28:03
  */
-const dbUrl = "mongodb://96.45.176.172:27017/";
+// const dbUrl = "mongodb://104.224.144.30:27017/";
+const dbUrl = "mongodb://127.0.0.1:27017/";
 const MongoClient = require('mongodb').MongoClient;
 
 const handel = {
@@ -11,12 +12,12 @@ const handel = {
    * @desc 登录
    * @param {String} id
    * @param {Object} req
-   * @param {Function} callback
-   * @returns
+   * @param {Function} callbackMongoClient
+   * @returns  { useUnifiedTopology: true } , username: 'admin', password: 'admin' }
    */
   login (req, callback) {
     const result = {success: false}
-    MongoClient.connect(dbUrl, { useNewUrlParser: true }, function(err, db) {
+    MongoClient.connect(dbUrl, { useUnifiedTopology: true, useNewUrlParser: true}, function(err, db) {
       if (err) throw err
         db.db('mydb').collection('loginData').findOne({'loginName': req.loginName}, function (err, user) {
           if (!err) {
